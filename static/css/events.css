@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Work+Sans:wght@500;900&family=Yanone+Kaffeesatz:wght@700&display=swap');
+
+/* COOL HEADING */
+.eve-head {opacity: 0;
+  font-family: "Russo One", sans-serif;
+  margin: 0 auto auto auto;
+  background: linear-gradient(to right, #f8b195, #28a745, #28a745);
+  font-weight: 800;
+  width: 400px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+  animation: shring-animation 2.2s steps(40,end) 2s forwards, blink .5s step-end infinite alternate;
+}
+
+@keyframes shring-animation {
+  0% {
+    background-position: 0 0;
+    opacity: 0;
+    width: 0;
+  }
+  1% {
+    background-position: 0 0;
+    opacity: 1;
+    border-right: 1px solid rgb(59, 56, 51);
+  }
+  50% {
+    background-position: 150px 0;
+    opacity: 1;
+    border-right: 1px solid rgb(27, 23, 17);
+  }
+  100% {
+    background-position: 400px 0;
+    opacity: 1;
+    border-right: 1px solid #28a745;
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  1%, 99%{
+    border-right: 1px solid orange;
+  }
+  100%{
+    border-right: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* END COOL HEADING */
+.events {
+    background-color: #f7f8fc;
+    font-family: "Open Sans", sans-serif;
+}
+
+.eve-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px #28a745;
+    overflow: hidden;
+    width: 18rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.eve-card:hover {
+    transform: translateY(-5px);
+}
+
+.card .eve-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag {
+    background-color: #ccc;
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 12px;
+    margin: 0;
+    padding: 2px 6px;
+    text-transform: uppercase;
+}
+
+.tag-teal {
+    background-color: #062727;
+}
+
+.card-body h4 {
+    margin: 10px 0;
+}
+
+.card-body p {
+    font-size: 14px;
+    margin: 0 0 40px 0;
+    font-weight: 500;
+    color: rgb(70, 68, 68);
+}
+
+.user {
+    display: flex;
+    margin-top: auto;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-info h5 {
+    margin: 0;
+}
+
+.user-info small {
+    color: #888785;
+}

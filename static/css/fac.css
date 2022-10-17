@@ -1,0 +1,249 @@
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+}
+
+.fac-header {
+    background: url(/static/img/bull.jpg), linear-gradient(45deg, rgba(0, 0, 0, 0.74), #132c40c9) no-repeat;
+    position: relative;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Work+Sans:wght@500;900&family=Yanone+Kaffeesatz:wght@700&display=swap');
+
+/* COOL HEADING */
+.fac-head {
+    opacity: 0;
+    font-family: "Russo One", sans-serif;
+    margin: 0 auto auto auto;
+    background: linear-gradient(to right, #ffffff, #ffffff, #2d7147);
+    font-weight: 800;
+    width: 400px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    overflow: hidden;
+    animation: shring-animation 2.2s steps(40, end) 2s forwards, blink .5s step-end infinite alternate;
+}
+
+@keyframes shring-animation {
+    0% {
+        background-position: 0 0;
+        opacity: 0;
+        width: 0;
+    }
+
+    1% {
+        background-position: 0 0;
+        opacity: 1;
+        border-right: 1px solid rgb(59, 56, 51);
+    }
+
+    50% {
+        background-position: 150px 0;
+        opacity: 1;
+        border-right: 1px solid rgb(27, 23, 17);
+    }
+
+    100% {
+        background-position: 400px 0;
+        opacity: 1;
+        border-right: 1px solid #28a745;
+    }
+}
+
+@keyframes type {
+    0% {
+        width: 0;
+    }
+
+    1%,
+    99% {
+        border-right: 1px solid orange;
+    }
+
+    100% {
+        border-right: none;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Cards */
+.fac-card{
+
+	background-color: #fff;
+	border:none;
+	border-radius: 10px;
+	width: 190px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.922);
+
+}
+
+.image-container{
+
+	position: relative;
+}
+
+.thumbnail-image{
+	border-radius: 10px !important;
+}
+
+
+.discount{
+
+	background-color: red;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	padding-right: 4px;
+	font-size: 10px;
+	border-radius: 6px;
+	color: #fff;
+}
+
+.first{
+
+	position: absolute;
+	width: 100%;
+	    padding: 9px;
+}
+
+
+.dress-name{
+	font-size: 18px;
+	font-weight: bold;
+	width: 75%;
+}
+
+
+.new-price{
+	font-size: 10px;
+	font-weight: bold;
+	color: red;
+	
+}
+
+
+.fac-btn{
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	padding: 3px;
+}
+
+.creme{
+	background-color: #fff;
+	border: 2px solid grey;
+	
+
+}
+.creme:hover {
+	border: 3px solid grey;
+}
+
+.creme:focus {
+	background-color: grey;
+
+}
+
+
+.red{
+	background-color: #fff;
+	border: 2px solid red;
+	
+}
+
+.red:hover {
+	border: 3px solid red;
+}
+.red:focus {
+	background-color: red;
+}
+.blue{
+	background-color: #fff;
+	border: 2px solid #40C4FF;
+}
+
+.blue:hover {
+	border: 3px solid #40C4FF;
+}
+.blue:focus {
+	background-color: #40C4FF;
+}
+.darkblue{
+	background-color: #fff;
+	border: 2px solid #01579B;
+}
+.darkblue:hover {
+	border: 3px solid #01579B;
+}
+.darkblue:focus {
+	background-color: #01579B;
+}
+.yellow{
+	background-color: #fff;
+	border: 2px solid #FFCA28;
+}
+.yellow:hover {
+	border-radius: 3px solid #FFCA28;
+}
+.yellow:focus {
+	background-color: #FFCA28;
+}
+
+.voutchers{
+	background-color: #fff;
+	border:none;
+	border-radius: 10px;
+	width: 190px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+}
+
+.voutchers:hover{
+	transform: translateY(-10px);
+}
+.voutcher-divider{
+
+	display: flex;
+
+}
+.voutcher-left{
+	width: 60%
+}
+.voutcher-name{
+	color: grey;
+	font-size: 9px;
+	font-weight: 500;
+}
+.voutcher-code{
+	color: red;
+	font-size: 11px;
+	font-weight: bold;
+}
+.voutcher-right{
+	width: 40%;	 
+	background-color: #28a745;
+	color: #fff;
+}
+
+.discount-percent{
+	font-size: 12px;
+	font-weight: bold;
+	position: relative;
+	top: 5px;
+}
+.off{
+	font-size: 12px;
+	text-decoration: none;
+	position: relative;
+	top: 10px;
+}
