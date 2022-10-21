@@ -64,14 +64,14 @@
     </div> -->
     <!-- ////////////////////////////////////////////////////////////////////////// -->
     <!-- Nav Sample Two -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light p-0">
         <div class="container-fluid">
             <a href="{% url 'home' %}" class="navbar-brand">
-                <img src="{% static 'img/logo2.png' %}" class="img-fluid" alt="logo" width="100">
+                <img src="{% static 'img/logo2.png' %}" class="img-fluid" alt="logo" width="80">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span><i class="fa fa-arrow-down text-success"></i></span>
+                <span><i class="fa fa-bars text-success"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mx-auto mb-2 mb-md-0">
@@ -93,12 +93,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">About</a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a href="{% url 'uthimitu' %}" class="nav-link px-2 link-light">Uthiru Ruthimitu</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a href="{% url 'uthimitu' %}" class="nav-link px-2 link-dark">Uthiru Ruthimitu</a>
                             </li>
                             <li><a href="{% url 'history' %}" class="nav-link px-2 link-light bg-success">History</a>
                             </li>
-                            <li><a href="{% url 'committee' %}" class="nav-link px-2 link-light">Ward Committee</a></li>
+                            <li><a href="{% url 'committee' %}" class="nav-link px-2 link-dark">Ward Committee</a></li>
                         </ul>
                     </li>
                 </ul>
