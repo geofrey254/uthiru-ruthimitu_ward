@@ -18,16 +18,16 @@
     <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'img/logo1.png' %}">
 
-    <link rel="stylesheet" href="{% static 'css/official.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styller.css' %}">
     <link rel="stylesheet" href="{% static 'css/events.css' %}">
     <link rel="stylesheet" href="{% static 'css/fac.css' %}">
     <link rel="stylesheet" href="{% static 'css/uthim.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cont.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/cont.css' %}">
     <title>Uthiru Ruthimitu Ward</title>
 </head>
 
 <body>
-    <div class="container" style="">
+    <!-- <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <a href="/" class="navbar-brand">
                 <img src="{% static 'img/logo2.png' %}" class="img-fluid" alt="logo" width="100">
@@ -38,6 +38,7 @@
                 <li><a href="{% url 'projects' %}" class="nav-link px-2 link-dark">Projects</a></li>
                 <li><a href="{% url 'events' %}" class="nav-link px-2 link-dark">Events</a></li>
                 <li><a href="{% url 'facilities' %}" class="nav-link px-2 link-dark">Ward Facilities</a></li>
+                <li><a href="{% url 'facilities' %}" class="nav-link px-2 link-dark">Services</a></li>
                 <li><a href="{% url 'contacts' %}" class="nav-link px-2 link-dark">Contact Us</a></li>
                 <div class="btn-group">
                     <button class="btn btn-success btn-sm text-light" type="button">
@@ -60,8 +61,53 @@
                 <button type="button" class="btn btn-danger"><a href="{% url 'emergencies' %}" class="text-light text-decoration-none"><i class='bx bxs-phone-call bx-tada'></i> Emergencies</a></button>
             </div>
         </header>
-    </div>
+    </div> -->
     <!-- ////////////////////////////////////////////////////////////////////////// -->
+    <!-- Nav Sample Two -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
+        <div class="container-fluid">
+            <a href="{% url 'home' %}" class="navbar-brand">
+                <img src="{% static 'img/logo2.png' %}" class="img-fluid" alt="logo" width="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fa fa-bars text-success"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link text-dark">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{% url 'projects' %}">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{% url 'facilities' %}">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="{% url 'events' %}">Events</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">About</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a href="{% url 'uthimitu' %}" class="nav-link px-2 link-light">Uthiru Ruthimitu</a>
+                            </li>
+                            <li><a href="{% url 'history' %}" class="nav-link px-2 link-light bg-success">History</a>
+                            </li>
+                            <li><a href="{% url 'committee' %}" class="nav-link px-2 link-light">Ward Committee</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-danger"><a href="{% url 'emergencies' %}"
+                        class="text-light text-decoration-none"><i class='bx bxs-phone-call bx-tada'></i>
+                        Emergencies</a></button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Main section begins here -->
 
@@ -166,18 +212,22 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 text-center text-lg-left">
                         <div class="copyright-text">
-                            <p class="text-light">Copyright &copy; 2022, All Rights Reserved <a
-                                    href="#">Uthiru Ruthimitu</a></p>
+                            <p class="text-light">Copyright &copy; 2022, All Rights Reserved <a href="#">Uthiru
+                                    Ruthimitu</a></p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                         <div class="footer-menu">
                             <ul>
                                 <li><a href="{% url 'home' %}" class="text-light text-decoration-none">Home</a></li>
-                                <li><a href="{% url 'tenders' %}" class="text-light text-decoration-none">Tenders</a></li>
-                                <li><a href="{% url 'tenders' %}" class="text-light text-decoration-none">Notices</a></li>
-                                <li><a href="{% url 'downloads' %}" class="text-light text-decoration-none">Downloads</a></li>
-                                <li><a href="{% url 'contacts' %}" class="text-light text-decoration-none">Contact</a></li>
+                                <li><a href="{% url 'tenders' %}" class="text-light text-decoration-none">Tenders</a>
+                                </li>
+                                <li><a href="{% url 'tenders' %}" class="text-light text-decoration-none">Notices</a>
+                                </li>
+                                <li><a href="{% url 'downloads' %}"
+                                        class="text-light text-decoration-none">Downloads</a></li>
+                                <li><a href="{% url 'contacts' %}" class="text-light text-decoration-none">Contact</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
