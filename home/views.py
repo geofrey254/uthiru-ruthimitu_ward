@@ -7,6 +7,9 @@ from django.http import HttpResponseRedirect
 
 from .forms import Birth_CertificateForm
 
+# models imports
+from .models import Projects
+
 # Create your views here.
 
 
@@ -15,7 +18,11 @@ def home(request):
 
 
 def projects(request):
-    return render(request, 'home/projects.html')
+    project_list = Projects.objects.filter(status=1).order_by('created_on')
+    context={
+        'project_list':project_list
+    }
+    return render(request, 'home/projects.html', context)
 
 
 def events(request):

@@ -26,12 +26,12 @@ LABEL = (
 )
 
 
-class Category(models.Model):
+class Progress_status(models.Model):
     title = models.CharField(max_length=20, unique=True, null=True)
     slug = models.SlugField(max_length=250, unique=True, null=True)
 
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'progress_status'
 
     def get_absolute_url(self):
         return reverse('blog_category', args=[self.slug])
@@ -39,39 +39,42 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-
-class News(models.Model):
+# Projects Model
+class Projects(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    blog_img = models.ImageField(upload_to="news_pics/", null=True, blank=True)
-    img_credits = models.CharField(max_length=255, null=True)
+    proj_img = models.ImageField(upload_to="proj_pics/", null=True)
     slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
-    author = models.CharField(max_length=100, default='Admin')
     updated_on = models.DateTimeField(auto_now=True)
-    body = tinymce_models.HTMLField()
+    description = models.CharField(max_length=2000, null=True, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    blog_type = models.IntegerField(choices=TYPE, default=0)
-    categories = models.ManyToManyField(Category, related_name='posts')
+    progress_status  =   models.ManyToManyField(Progress_status, related_name='projects')
 
     class Meta:
         ordering = ['-created_on']
+        verbose_name_plural =   'Projects'
 
     def __str__(self):
-        return self.title + ' | ' + str(self.author)
-
-    def get_absolute_url(self):
-        return reverse('article-detail', args=[self.slug])
+        return self.title
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.blog_img = self.compressImage(self.blog_img)
-        super(News, self).save(*args, **kwargs)
+            self.proj_img = self.compressImage(self.proj_img)
+        super(Projects, self).save(*args, **kwargs)
 
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+    
+    def compressImage(self,proj_img):
+        imageTemporary  =   Image.open(proj_img)
+        outputIOStream  =   BytesIO()
+        imageTemporaryResized   =   imageTemporary.resize((1020,573))
+        imageTemporary.save(outputIOStream, format='JPEG', quality=60)
+        outputIOStream.seek(0)
+        proj_img    =   InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % proj_img.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
+        return proj_img
 
-# Individual Returns Model Structure
 
 
 class Birth_Certificate(models.Model):

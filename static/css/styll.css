@@ -472,7 +472,7 @@ figure.snip1249 img {
 
 figure.snip1249 i {
   position: absolute;
-  top: 7px;
+  bottom: 3px;
   left: 12px;
   font-size: 32px;
   opacity: 0;
@@ -577,11 +577,11 @@ figure.snip1249 .price {
   text-align: center;
 }
 
-figure.snip1249 .price s {
+figure.snip1249 .price small {
   display: block;
   font-size: 0.85em;
   font-weight: 400;
-  opacity: 0.8;
+  font-family: 'Poppins';
 }
 
 figure.snip1249:hover i,
