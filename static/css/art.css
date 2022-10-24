@@ -1,0 +1,46 @@
+.artssy {
+    
+}
+
+.ar-card {
+    height: auto;
+    margin: 4% auto;
+}
+
+.author-container {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.author-picture {
+    width: 50%;
+    height: auto;
+}
+
+@media (max-width: 576px) {
+    .author-picture {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.content {
+    width: 70%;
+    margin: 70px auto;
+    max-width: 600px;
+}
+
+.article-img-section {
+    clear: both;
+    display: block;
+}
+
+.author {
+    color: #E89629;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 15px 0 25px 0;
+}

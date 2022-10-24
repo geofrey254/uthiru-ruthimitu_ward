@@ -75,6 +75,44 @@ class Projects(models.Model):
         proj_img    =   InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % proj_img.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return proj_img
 
+# Blog Page Models
+class Post(models.Model):
+    title       =   models.CharField(max_length=255, unique=True)
+    blog_img    =   models.ImageField(upload_to="blog_pics/", null=True, blank=True)
+    slug        =   models.SlugField(max_length=250, null=True, blank=True, unique=True)
+    author      =   models.CharField(max_length=100, default='Admin')
+    updated_on  =   models.DateTimeField(auto_now=True)
+    body        =   tinymce_models.HTMLField()
+    created_on  =   models.DateTimeField(auto_now_add=True)
+    status      =   models.IntegerField(choices=STATUS, default=0)
+
+
+    class Meta:
+        ordering    =   ['-created_on']
+
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('article-detail', args=[self.slug])
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.blog_img   =   self.compressImage(self.blog_img)
+        super(Post, self).save(*args, **kwargs)
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+    
+    def compressImage(self,blog_img):
+        imageTemporary  =   Image.open(blog_img)
+        outputIOStream  =   BytesIO()
+        imageTemporaryResized   =   imageTemporary.resize((1020,573))
+        imageTemporary.save(outputIOStream, format='JPEG', quality=60)
+        outputIOStream.seek(0)
+        blog_img    =   InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % blog_img.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
+        return blog_img
 
 
 class Birth_Certificate(models.Model):

@@ -1,10 +1,17 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status
+from .models import Birth_Certificate, Projects, Progress_status, Post
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
     prepopulated_fields={'slug':('title',)}
 admin.site.register(Progress_status, Progress_statusAdmin)
+
+class PostAdmin(admin.ModelAdmin):
+    list_display=('title','slug','status','created_on')
+    list_filter=("status","created_on")
+    search_fields=['title','body']
+    prepopulated_fields={'slug':('title',)}
+admin.site.register(Post,PostAdmin)
 
 class Birth_CertificateAdmin(admin.ModelAdmin):
     list_display=('first_name','last_name','phone_number','ordered_on', 'Date_of_Birth')

@@ -8,19 +8,20 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects
+from .models import Projects, Post
 
 # Create your views here.
 
 
 def home(request):
+    posts = Post.objects.filter[0:3]
     return render(request, 'home/landing.html')
 
 
 def projects(request):
     project_list = Projects.objects.filter(status=1).order_by('created_on')
-    context={
-        'project_list':project_list
+    context = {
+        'project_list': project_list
     }
     return render(request, 'home/projects.html', context)
 
@@ -62,7 +63,32 @@ def programmes(request):
 
 
 def blogs(request):
-    return render(request, 'home/blogger.html')
+    posts = Post.objects.all()
+
+    paginator = Paginator(posts, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    context = {
+        'posts': posts,
+    }
+
+    return render(request, 'home/blogger.html', context)
+
+# Article views
+def article_detail(request, slug, *args, **kwargs):
+    post        =   Post.objects.get(slug=slug)
+
+    context     =   {
+        "post": post,
+    }
+
+    return render(request, "home/article.html", context)
 
 
 def maps(request):

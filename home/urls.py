@@ -18,6 +18,7 @@ urlpatterns = [
     path('uthiru-ruthimitu/garbage-pickup/', views.garbage, name='garbage'),
     path('uthiru-ruthimitu/ward-programmes/', views.programmes, name='programmes'),
     path('uthiru-ruthimitu/blogs/', views.blogs, name='blogs'),
+    path('uthiru-ruthimitu/<slug:slug>/', views.article_detail, name='article-detail'),
     
     path('uthiru-ruthimitu/map/', views.maps, name='maps'),
     path('uthiru-ruthimitu/downloads/', views.downloads, name='downloads'),

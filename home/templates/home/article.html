@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="artssy">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 main">
+                <div class="text-center mt-4">            
+                    <h1 class="blog-title display-4 fw-bold">{{ post.title|safe}}</h1>        
+                    <p class="author">by {{ post.author }} | {{ post.created_on|timesince }} ago</p>
+                </div>
+                <div class="hero justify-content-center text-center">
+                    <div class="author-container">
+                        {% if post.blog_img %}
+                        <img class="author-picture border rounded shadow-lg"
+                            src="{{ post.blog_img.url }}">
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="content">
+                    <p class="blog-content">{{ post.body | safe }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
