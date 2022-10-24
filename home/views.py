@@ -14,8 +14,12 @@ from .models import Projects, Post
 
 
 def home(request):
-    posts = Post.objects.filter[0:3]
-    return render(request, 'home/landing.html')
+    posts = Post.objects.order_by('-created_on')[0:3]
+
+    context = {
+        'posts':posts
+    }
+    return render(request, 'home/landing.html', context)
 
 
 def projects(request):
