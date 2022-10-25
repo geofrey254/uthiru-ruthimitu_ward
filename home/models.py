@@ -139,3 +139,9 @@ class Birth_Certificate(models.Model):
             return "No attachment"
     file_link.allow_tags = True
     file_link.short_description = 'File Download'
+
+# Gallery Models
+class Gallery(models.Model):
+    img_title       =   models.CharField(max_length=255, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    add_image    =   models.ImageField(upload_to="gallery_pics/", null=True, blank=True)

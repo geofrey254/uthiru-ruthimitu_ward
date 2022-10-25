@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects, Post
+from .models import Projects, Post, Gallery
 
 # Create your views here.
 
@@ -108,7 +108,11 @@ def tenders(request):
 
 
 def gallery(request):
-    return render(request, 'home/gallery.html')
+    gallery = Gallery.objects.order_by('created_on')
+    context={
+        'gallery':gallery
+    }
+    return render(request, 'home/gallery.html', context)
 
 # Forms Views
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -12,6 +12,12 @@ class PostAdmin(admin.ModelAdmin):
     search_fields=['title','body']
     prepopulated_fields={'slug':('title',)}
 admin.site.register(Post,PostAdmin)
+
+class GalleryAdmin(admin.ModelAdmin):
+    list_display=('img_title','created_on',)
+    list_filter=('img_title','created_on',)
+    search_fields=['img_title']
+admin.site.register(Gallery,GalleryAdmin)
 
 class Birth_CertificateAdmin(admin.ModelAdmin):
     list_display=('first_name','last_name','phone_number','ordered_on', 'Date_of_Birth')

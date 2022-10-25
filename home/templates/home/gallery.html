@@ -7,15 +7,11 @@
             <h2 class="text-dark mb-5 text-center" style="font-family: 'Poppins'; font-weight:bolder;">Media Gallery</h2>
         </div>
         <div class="row justify-content-between">
+            {% for img in gallery %}
             <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4">
-                <img class="shadow-lg  rounded" src="{% static 'img/flee.jpg' %}" alt="card">                
+                <img class="shadow-lg  rounded" src="{{ img.add_image.url }}" alt="card">                
             </div>
-            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4">
-                <img class="shadow-lg rounded" src="{% static 'img/cnty.jpg' %}" alt="card">                
-            </div>
-            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4">
-                <img class="shadow-lg rounded" src="{% static 'img/bg2.jpg' %}" alt="card">                
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
