@@ -40,6 +40,8 @@ class Progress_status(models.Model):
         return self.title
 
 # Projects Model
+
+
 class Projects(models.Model):
     title = models.CharField(max_length=255, unique=True)
     proj_img = models.ImageField(upload_to="proj_pics/", null=True)
@@ -48,11 +50,12 @@ class Projects(models.Model):
     description = models.CharField(max_length=2000, null=True, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    progress_status  =   models.ManyToManyField(Progress_status, related_name='projects')
+    progress_status = models.ManyToManyField(
+        Progress_status, related_name='projects')
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural =   'Projects'
+        verbose_name_plural = 'Projects'
 
     def __str__(self):
         return self.title
@@ -65,53 +68,56 @@ class Projects(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
-    
-    def compressImage(self,proj_img):
-        imageTemporary  =   Image.open(proj_img)
-        outputIOStream  =   BytesIO()
-        imageTemporaryResized   =   imageTemporary.resize((1020,573))
+
+    def compressImage(self, proj_img):
+        imageTemporary = Image.open(proj_img)
+        outputIOStream = BytesIO()
+        imageTemporaryResized = imageTemporary.resize((1020, 573))
         imageTemporary.save(outputIOStream, format='JPEG', quality=60)
         outputIOStream.seek(0)
-        proj_img    =   InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % proj_img.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
+        proj_img = InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % proj_img.name.split(
+            '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return proj_img
 
 # Blog Page Models
-class Post(models.Model):
-    title       =   models.CharField(max_length=255, unique=True)
-    blog_img    =   models.ImageField(upload_to="blog_pics/", null=True, blank=True)
-    slug        =   models.SlugField(max_length=250, null=True, blank=True, unique=True)
-    author      =   models.CharField(max_length=100, default='Admin')
-    updated_on  =   models.DateTimeField(auto_now=True)
-    body        =   tinymce_models.HTMLField()
-    created_on  =   models.DateTimeField(auto_now_add=True)
-    status      =   models.IntegerField(choices=STATUS, default=0)
 
+
+class Post(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    blog_img = models.ImageField(upload_to="blog_pics/", null=True, blank=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
+    author = models.CharField(max_length=100, default='Admin')
+    updated_on = models.DateTimeField(auto_now=True)
+    body = tinymce_models.HTMLField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
-        ordering    =   ['-created_on']
+        ordering = ['-created_on']
 
     def __str__(self):
         return self.title
-    
+
     def get_absolute_url(self):
         return reverse('article-detail', args=[self.slug])
-    
+
     def save(self, *args, **kwargs):
         if not self.id:
-            self.blog_img   =   self.compressImage(self.blog_img)
+            self.blog_img = self.compressImage(self.blog_img)
         super(Post, self).save(*args, **kwargs)
 
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
-    
-    def compressImage(self,blog_img):
-        imageTemporary  =   Image.open(blog_img)
-        outputIOStream  =   BytesIO()
-        imageTemporaryResized   =   imageTemporary.resize((1020,573))
+
+    def compressImage(self, blog_img):
+        imageTemporary = Image.open(blog_img)
+        outputIOStream = BytesIO()
+        imageTemporaryResized = imageTemporary.resize((1020, 573))
         imageTemporary.save(outputIOStream, format='JPEG', quality=60)
         outputIOStream.seek(0)
-        blog_img    =   InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % blog_img.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
+        blog_img = InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % blog_img.name.split(
+            '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return blog_img
 
 
@@ -141,7 +147,36 @@ class Birth_Certificate(models.Model):
     file_link.short_description = 'File Download'
 
 # Gallery Models
+
+
 class Gallery(models.Model):
-    img_title       =   models.CharField(max_length=255, unique=True)
+    img_title = models.CharField(max_length=255, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    add_image    =   models.ImageField(upload_to="gallery_pics/", null=True, blank=True)
+    add_image = models.ImageField(
+        upload_to="gallery_pics/", null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Gallery'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.add_image = self.compressImage(self.add_image)
+        super(Gallery, self).save(*args, **kwargs)
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
+    def compressImage(self, add_image):
+        imageTemporary = Image.open(add_image)
+        outputIOStream = BytesIO()
+        imageTemporaryResized = imageTemporary.resize((1020, 573))
+        imageTemporary.save(outputIOStream, format='JPEG', quality=60)
+        outputIOStream.seek(0)
+        blog_img = InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % add_image.name.split(
+            '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
+        return add_image

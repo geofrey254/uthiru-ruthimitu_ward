@@ -17,16 +17,15 @@ urlpatterns = [
     path('uthiru-ruthimitu/contact-us/', views.contacts, name='contacts'),
     path('uthiru-ruthimitu/garbage-pickup/', views.garbage, name='garbage'),
     path('uthiru-ruthimitu/ward-programmes/', views.programmes, name='programmes'),
-    path('uthiru-ruthimitu/blogs/', views.blogs, name='blogs'),
-    path('uthiru-ruthimitu/<slug:slug>/', views.article_detail, name='article-detail'),
-    
+    path('uthiru-ruthimitu/blogs/', views.blogs, name='blogs'),    
     path('uthiru-ruthimitu/map/', views.maps, name='maps'),
     path('uthiru-ruthimitu/downloads/', views.downloads, name='downloads'),
     path('uthiru-ruthimitu/tenders/', views.tenders, name='tenders'),  
     path('uthiru-ruthimitu/gallery/', views.gallery, name='gallery'),
 
     # Forms URLS Patterns
-    path('uthiru-ruthimitu/birth_certificate_registration/', views.birth, name='birth')
+    path('uthiru-ruthimitu/birth_certificate_registration/', views.birth, name='birth'),
+    path('uthiru-ruthimitu/<slug:slug>/', views.article_detail, name='article-detail'),
 ]
 
 if settings.DEBUG: 

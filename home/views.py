@@ -87,7 +87,7 @@ def blogs(request):
 # Article views
 def article_detail(request, slug, *args, **kwargs):
     post        =   Post.objects.get(slug=slug)
-
+    
     context     =   {
         "post": post,
     }
