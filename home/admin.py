@@ -17,6 +17,7 @@ class GalleryAdmin(admin.ModelAdmin):
     list_display=('img_title','created_on',)
     list_filter=('img_title','created_on',)
     search_fields=['img_title']
+    prepopulated_fields={'slug':('img_title',)}
 admin.site.register(Gallery,GalleryAdmin)
 
 class Birth_CertificateAdmin(admin.ModelAdmin):

@@ -1,10 +1,13 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block content %}
-<section class="gallery">
+<section class="gallery" style="background-color: #ffffff;
+background-image:  radial-gradient(#45f77d 0.5px, transparent 0.5px), radial-gradient(#45f77d 0.5px, #ffffff 0.5px);
+background-size: 20px 20px;
+background-position: 0 0,10px 10px;">
     <div class="container px-4 py-5">
         <div class="header-section">
-            <h2 class="text-dark mb-5 text-center" style="font-family: 'Poppins'; font-weight:bolder;">Media Gallery</h2>
+            <h2 class="text-dark mb-5 text-center" style="font-family: 'Poppins'; font-weight:bolder; text-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.541);">Media Gallery</h2>
         </div>
         <div class="row justify-content-between">
             {% for img in gallery %}

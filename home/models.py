@@ -25,6 +25,20 @@ LABEL = (
     (1, "Trending")
 )
 
+class Category(models.Model):
+    title   =   models.CharField(max_length=20, unique=True, null=True)
+    slug        =   models.SlugField(max_length=250, unique=True,null=True)
+
+    class Meta:
+        verbose_name_plural =   'categories'
+
+    def get_absolute_url(self):
+        return reverse('blog_category', args=[self.slug])
+
+
+    def __str__(self):
+        return self.title
+
 
 class Progress_status(models.Model):
     title = models.CharField(max_length=20, unique=True, null=True)
@@ -151,6 +165,7 @@ class Birth_Certificate(models.Model):
 
 class Gallery(models.Model):
     img_title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     add_image = models.ImageField(
         upload_to="gallery_pics/", null=True, blank=True)
@@ -160,7 +175,7 @@ class Gallery(models.Model):
         verbose_name_plural = 'Gallery'
 
     def __str__(self):
-        return self.title
+        return self.img_title
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -168,7 +183,7 @@ class Gallery(models.Model):
         super(Gallery, self).save(*args, **kwargs)
 
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.img_title)
         return super().save(*args, **kwargs)
 
     def compressImage(self, add_image):
@@ -180,3 +195,21 @@ class Gallery(models.Model):
         blog_img = InMemoryUploadedFile(outputIOStream, 'ImageField', "%s.jpg" % add_image.name.split(
             '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return add_image
+
+# Events Model 
+class Events(models.Model):
+    ev_title = models.CharField(max_length=255, unique=True)
+    ev_img = models.ImageField(
+        upload_to="events_pics/", null=True, blank=True)
+    ev_category =   models.ManyToManyField(Category, related_name='events')
+    ev_date = models.DateTimeField(null=True, blank=True)    
+    ev_loc = models.CharField(max_length=200, blank=False, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Events'
+
+    def __str__(self):
+        return self.ev_title
+
