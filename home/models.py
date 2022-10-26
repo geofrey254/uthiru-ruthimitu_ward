@@ -199,6 +199,7 @@ class Gallery(models.Model):
 # Events Model 
 class Events(models.Model):
     ev_title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
     ev_img = models.ImageField(
         upload_to="events_pics/", null=True, blank=True)
     ev_category =   models.ManyToManyField(Category, related_name='events')
