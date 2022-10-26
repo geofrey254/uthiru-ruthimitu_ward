@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -39,3 +39,7 @@ class EventsAdmin(admin.ModelAdmin):
     search_fields=['ev_title', 'created_on', 'ev_loc', 'ev_date']
     prepopulated_fields={'slug':('ev_title',)}
 admin.site.register(Events,EventsAdmin) 
+
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields={'slug':('title',)}
+admin.site.register(Category,CategoryAdmin)
