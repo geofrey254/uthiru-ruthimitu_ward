@@ -14,14 +14,12 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
+              {% for down in download %}
               <tr>
-                <td><i class='bx bxs-file-pdf bx-sm text-danger'></i> CIDP- COUNTY INTEGRATED DEVELOPMENT PLAN 2018-2022</td>
-                <td><a href="#" class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
+                <td><i class='bx bxs-file-pdf bx-sm text-danger'></i> {{down.d_title}}</td>
+                <td><a href="{{down.d_file}}" class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
               </tr>
-              <tr>
-                <td><i class='bx bxs-file-pdf bx-sm text-danger'></i> CIDP- COUNTY INTEGRATED DEVELOPMENT PLAN 2018-2022</td>
-                <td><a href="#" class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
     </div>

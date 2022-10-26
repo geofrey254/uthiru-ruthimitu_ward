@@ -25,16 +25,16 @@ LABEL = (
     (1, "Trending")
 )
 
+
 class Category(models.Model):
-    title   =   models.CharField(max_length=20, unique=True, null=True)
-    slug        =   models.SlugField(max_length=250, unique=True,null=True)
+    title = models.CharField(max_length=20, unique=True, null=True)
+    slug = models.SlugField(max_length=250, unique=True, null=True)
 
     class Meta:
-        verbose_name_plural =   'categories'
+        verbose_name_plural = 'categories'
 
     def get_absolute_url(self):
         return reverse('blog_category', args=[self.slug])
-
 
     def __str__(self):
         return self.title
@@ -196,14 +196,16 @@ class Gallery(models.Model):
             '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return add_image
 
-# Events Model 
+# Events Model
+
+
 class Events(models.Model):
     ev_title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
     ev_img = models.ImageField(
         upload_to="events_pics/", null=True, blank=True)
-    ev_category =   models.ManyToManyField(Category, related_name='events')
-    ev_date = models.DateTimeField(null=True, blank=True)    
+    ev_category = models.ManyToManyField(Category, related_name='events')
+    ev_date = models.DateTimeField(null=True, blank=True)
     ev_loc = models.CharField(max_length=200, blank=False, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -214,3 +216,26 @@ class Events(models.Model):
     def __str__(self):
         return self.ev_title
 
+# Downloads Model
+
+
+class Downloads(models.Model):
+    d_title = models.CharField(max_length=255, null=True, unique=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
+    d_file = models.FileField(upload_to="P9s/", null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Downloads'
+
+    def __str__(self):
+        return self.d_title
+
+    def file_link(self):
+        if self.d_file:
+            return "<a href='%s'>download</a>" % (self.d_file.url,)
+        else:
+            return "No attachment"
+    file_link.allow_tags = True
+    file_link.short_description = 'File Download'

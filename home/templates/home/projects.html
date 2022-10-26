@@ -21,7 +21,7 @@ background-position: 0 0,10px 10px;">
                         <p>{{proj.description}}</p>
                         <div class="price">
                             {% for cat in proj.progress_status.all %}
-                            <small class="fw-bold">{{ cat.title }}</small>
+                            <small class="fw-bold btn btn-dark">{{ cat.title }}</small>
                             {% endfor %}
                         </div>
                     </figcaption>

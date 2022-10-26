@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects, Post, Gallery, Events
+from .models import Projects, Post, Gallery, Events, Downloads
 
 # Create your views here.
 
@@ -104,7 +104,11 @@ def maps(request):
 
 
 def downloads(request):
-    return render(request, 'home/downloads.html')
+    download = Downloads.objects.order_by('created_on')
+    context = {
+        'download':Downloads
+    }
+    return render(request, 'home/downloads.html', context)
 
 
 def tenders(request):
