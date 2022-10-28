@@ -104,9 +104,9 @@ def maps(request):
 
 
 def downloads(request):
-    download = Downloads.objects.order_by('created_on')
+    downloads = Downloads.objects.order_by('created_on')
     context = {
-        'download':Downloads
+        'downloads':Downloads
     }
     return render(request, 'home/downloads.html', context)
 

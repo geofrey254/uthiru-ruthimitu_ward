@@ -18,14 +18,12 @@ class Birth_CertificateForm(forms.ModelForm):
             'first_name',
             'middle_name',
             'last_name',
-            'parent_identification',
             'Date_of_Birth',
             'e_mail_address',
             'phone_number'
           
         ]
         widgets = {
-            'parent_identification': FileInput(attrs={'style':'background-color:none;', 'class':'form-control'}),
             'Date_of_Birth': DateInput(),
             'phone_number': Number(attrs={'placeholder':'0701234567'}),
             'e_mail_address': TextInput(attrs={'placeholder':'johndoe@email.com'}),

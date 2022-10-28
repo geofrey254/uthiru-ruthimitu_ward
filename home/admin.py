@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -50,3 +50,10 @@ class DownloadsAdmin(admin.ModelAdmin):
     search_fields=['d_title']
     prepopulated_fields={'slug':('d_title',)}
 admin.site.register(Downloads,DownloadsAdmin)
+
+# Facilities Admin Reg
+class FacilityAdmin(admin.ModelAdmin):
+    list_display=('fac_title', 'created_on', 'fac_availability', 'fac_price', 'fac_state')
+    list_filter=('fac_title', 'created_on', 'fac_availability', 'fac_price', 'fac_state')
+    search_fields=['fac_title', 'created_on', 'fac_availability', 'fac_price', 'fac_state']
+admin.site.register(Facility, FacilityAdmin)

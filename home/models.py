@@ -140,7 +140,6 @@ class Birth_Certificate(models.Model):
     middle_name = models.CharField(max_length=250, null=True)
     last_name = models.CharField(max_length=250, null=True)
     ordered_on = models.DateTimeField(auto_now_add=True)
-    parent_identification = models.FileField(upload_to="P9s/", null=True)
     Date_of_Birth = models.DateTimeField(null=True, blank=True)
     e_mail_address = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=40, null=True)
@@ -239,3 +238,21 @@ class Downloads(models.Model):
             return "No attachment"
     file_link.allow_tags = True
     file_link.short_description = 'File Download'
+
+
+class Facility(models.Model):
+    fac_title = models.CharField(max_length=255, null=True, unique=True)
+    fac_img = models.ImageField(
+        upload_to="facilities_pics/", null=True, blank=True)
+    fac_state = models.CharField(max_length=100, default='New/Old')
+    fac_price = models.IntegerField(null=True)
+    fac_availability = models.CharField(
+        max_length=100, default='Available/Not Available')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Facilities'
+
+    def __str__(self):
+        return self.fac_title + self.fac_availability
