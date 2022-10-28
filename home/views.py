@@ -45,7 +45,6 @@ def facilities(request):
     }
     return render(request, 'home/facilities.html', context)
 
-
 def uthimitu(request):
     return render(request, 'home/uthimitu.html')
 

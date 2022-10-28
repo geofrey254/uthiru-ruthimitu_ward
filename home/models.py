@@ -134,33 +134,7 @@ class Post(models.Model):
             '.')[0], 'image/jpeg', sys.getsizeof(outputIOStream), None)
         return blog_img
 
-
-class Birth_Certificate(models.Model):
-    first_name = models.CharField(max_length=250, null=True)
-    middle_name = models.CharField(max_length=250, null=True)
-    last_name = models.CharField(max_length=250, null=True)
-    ordered_on = models.DateTimeField(auto_now_add=True)
-    Date_of_Birth = models.DateTimeField(null=True, blank=True)
-    e_mail_address = models.EmailField(null=True, blank=True)
-    phone_number = models.CharField(max_length=40, null=True)
-
-    class Meta:
-        ordering = ['-ordered_on']
-        verbose_name_plural = 'Individual Returns'
-
-    def __str__(self):
-        return self.first_name + self.last_name
-
-    def file_link(self):
-        if self.parent_identification:
-            return "<a href='%s'>download</a>" % (self.parent_identification.url,)
-        else:
-            return "No attachment"
-    file_link.allow_tags = True
-    file_link.short_description = 'File Download'
-
 # Gallery Models
-
 
 class Gallery(models.Model):
     img_title = models.CharField(max_length=255, unique=True)
@@ -256,3 +230,30 @@ class Facility(models.Model):
 
     def __str__(self):
         return self.fac_title + self.fac_availability
+
+# ###########################################################################
+# ################################################################################################
+# FORMS MODELS
+class Birth_Certificate(models.Model):
+    first_name = models.CharField(max_length=250, null=True)
+    middle_name = models.CharField(max_length=250, null=True)
+    last_name = models.CharField(max_length=250, null=True)
+    ordered_on = models.DateTimeField(auto_now_add=True)
+    Date_of_Birth = models.DateTimeField(null=True, blank=True)
+    e_mail_address = models.EmailField(null=True, blank=True)
+    phone_number = models.CharField(max_length=40, null=True)
+
+    class Meta:
+        ordering = ['-ordered_on']
+        verbose_name_plural = 'Individual Returns'
+
+    def __str__(self):
+        return self.first_name + self.last_name
+
+    def file_link(self):
+        if self.parent_identification:
+            return "<a href='%s'>download</a>" % (self.parent_identification.url,)
+        else:
+            return "No attachment"
+    file_link.allow_tags = True
+    file_link.short_description = 'File Download'
