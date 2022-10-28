@@ -244,7 +244,7 @@ class Committee(models.Model):
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural = 'Committee'
+        verbose_name_plural = 'Ward Committe'
 
     def __str__(self):
         return self.name + self.role
