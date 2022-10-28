@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility, Committee
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -57,3 +57,10 @@ class FacilityAdmin(admin.ModelAdmin):
     list_filter=('fac_title', 'created_on', 'fac_availability', 'fac_price', 'fac_state')
     search_fields=['fac_title', 'created_on', 'fac_availability', 'fac_price', 'fac_state']
 admin.site.register(Facility, FacilityAdmin)
+
+# Ward Committee Admin Reg
+class CommitteeAdmin(admin.ModelAdmin):
+    list_display=('name', 'role',)
+    list_filter=('name', 'role')
+    search_fields=['name', 'role']
+admin.site.register(Committee, CommitteeAdmin)

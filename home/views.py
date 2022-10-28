@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects, Post, Gallery, Events, Downloads, Facility
+from .models import Projects, Post, Gallery, Events, Downloads, Facility, Committee
 
 # Create your views here.
 
@@ -54,7 +54,9 @@ def history(request):
 
 
 def committee(request):
-    return render(request, 'home/committee.html')
+    comm = Committee.objects.order_by('created_on')
+    
+    return render(request, 'home/committee.html', {'comm':comm})
 
 
 def emergency(request):

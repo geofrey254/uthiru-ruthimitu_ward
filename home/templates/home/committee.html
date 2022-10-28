@@ -7,69 +7,25 @@
     </div>
     <div class="container">
         <div class="row">
+            {% for comm in comm %}
             <div class="col-md-3 col-sm-6">
                 <div class="our-team p-4 text-center justify-content-center align-items-center">
                     <div class="pic">
-                        <img src="{% static 'img/mca.png' %}">
+                        {% if comm.member_img %}
+                        <img src="{{comm.member_img.url}}">
+                        {% endif %}
                     </div>
-                    <h3 class="tit text-success">Hon. Maina Peter</h3>
-                    <span class="post">MCA</span>
+                    <h3 class="tit text-success">{{comm.name}}</h3>
+                    <span class="post">{{comm.role}}</span>
                     <ul class="social">
-                        <li><a href="#"><i class='bx bxl-facebook bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-instagram-alt bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-linkedin'></i></a></li>
+                        <li><a href="{{comm.facebook}}"><i class='bx bxl-facebook bx-tada'></i></a></li>
+                        <li><a href="{{comm.twitter}}"><i class='bx bxl-twitter'></i></a></li>
+                        <li><a href="{{comm.instagram}}"><i class='bx bxl-instagram-alt bx-tada'></i></a></li>
+                        <li><a href="{{comm.linkedin}}"><i class='bx bxl-linkedin'></i></a></li>
                     </ul>
                 </div>
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="our-team p-4 text-center justify-content-center align-items-center">
-                    <div class="pic">
-                        <img src="{% static 'img/mca.png' %}">
-                    </div>
-                    <h3 class="tit text-success">Hon. Maina Peter</h3>
-                    <span class="post">MCA</span>
-                    <ul class="social">
-                        <li><a href="#"><i class='bx bxl-facebook bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-instagram-alt bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-linkedin'></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="our-team p-4 text-center justify-content-center align-items-center">
-                    <div class="pic">
-                        <img src="{% static 'img/mca.png' %}">
-                    </div>
-                    <h3 class="tit text-success">Hon. Maina Peter</h3>
-                    <span class="post">MCA</span>
-                    <ul class="social">
-                        <li><a href="#"><i class='bx bxl-facebook bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-instagram-alt bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-linkedin'></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="our-team p-4 text-center justify-content-center align-items-center">
-                    <div class="pic">
-                        <img src="{% static 'img/mca.png' %}">
-                    </div>
-                    <h3 class="tit text-success">Hon. Maina Peter</h3>
-                    <span class="post">MCA</span>
-                    <ul class="social">
-                        <li><a href="#"><i class='bx bxl-facebook bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-instagram-alt bx-tada'></i></a></li>
-                        <li><a href="#"><i class='bx bxl-linkedin'></i></a></li>
-                    </ul>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

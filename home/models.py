@@ -231,6 +231,24 @@ class Facility(models.Model):
     def __str__(self):
         return self.fac_title + self.fac_availability
 
+class Committee(models.Model):
+    name = models.CharField(max_length=255, null=True, unique=True)
+    member_img = models.ImageField(
+        upload_to="member_pics/", null=True, blank=True)
+    role = models.CharField(max_length=255, null=True)
+    facebook = models.CharField(max_length=255, null=True, blank=True)
+    twitter = models.CharField(max_length=255, null=True, blank=True)
+    linkedin = models.CharField(max_length=255, null=True, blank=True)
+    instagram = models.CharField(max_length=255, null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Committee'
+
+    def __str__(self):
+        return self.name + self.role
+
 # ###########################################################################
 # ################################################################################################
 # FORMS MODELS
