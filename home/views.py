@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects, Post, Gallery, Events, Downloads
+from .models import Projects, Post, Gallery, Events, Downloads, Facility
 
 # Create your views here.
 
@@ -39,7 +39,11 @@ def events(request):
 
 
 def facilities(request):
-    return render(request, 'home/facilities.html')
+    facilities = Facility.objects.order_by('created_on')
+    context = {
+        'facilities':facilities
+    }
+    return render(request, 'home/facilities.html', context)
 
 
 def uthimitu(request):
