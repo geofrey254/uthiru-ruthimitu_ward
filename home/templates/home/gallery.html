@@ -7,12 +7,19 @@ background-size: 20px 20px;
 background-position: 0 0,10px 10px;">
     <div class="container px-4 py-5">
         <div class="header-section">
-            <h2 class="text-dark mb-5 text-center" style="font-family: 'Poppins'; font-weight:bolder; text-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.541);">Media Gallery</h2>
+            <h2 class="text-dark mb-5 text-center"
+                style="font-family: 'Poppins'; font-weight:bolder; text-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.541);">
+                Media Gallery</h2>
         </div>
         <div class="row justify-content-between">
             {% for img in gallery %}
-            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4">
-                <img class="shadow-lg  rounded" src="{{ img.add_image.url }}" alt="card">                
+            <!-- <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4" uk-lightbox="animation: fade">
+                <img class="shadow-lg  rounded uk-animation-kenburns" src="{{ img.add_image.url }}" alt="card">                
+            </div> -->
+            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6 mb-4" uk-grid uk-lightbox="animation: slide">
+                    <a class="uk-inline" href="{{ img.add_image.url }}">
+                        <img class="shadow-lg rounded uk-animation-kenburns" uk-scrollspy="cls: uk-animation-kenburns; repeat: true" src="{{ img.add_image.url }}" alt="card">
+                    </a>
             </div>
             {% endfor %}
         </div>

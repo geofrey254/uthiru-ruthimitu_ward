@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/css/uikit.min.css" />
+
     <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'img/logo1.png' %}">
 
@@ -28,7 +31,7 @@
 </head>
 
 <body>
-  <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-light">
         <div class="container-fluid">
             <a href="{% url 'home' %}" class="navbar-brand">
@@ -75,6 +78,7 @@
     </nav>
 
     <!-- Main section begins here -->
+
 
     {% block content %}
     {% endblock content %}
@@ -208,6 +212,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/js/uikit-icons.min.js"></script>
     <script src="{% static 'js/slide.js' %}"></script>
 
 
