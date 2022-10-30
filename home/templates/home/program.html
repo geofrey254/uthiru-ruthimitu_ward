@@ -7,30 +7,22 @@
             <h2 class="text-center fw-bold p-4">SPORTS AND RECREATIONAL PROGRAMMES</h2>
         </div>
         <div class="row p-4 justify-content-between">
+            {% for prog in prog %}
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bg-light p-4 shadow-lg mb-3">
                 <div class="prog-img">
-                    <img src="{% static 'img/bg3.jpg' %}" class="img-fluid border-0 rounded shadow-lg" alt="...">
+                    {% if prog.sp_img %}
+                    <img src="{{prog.sp_img.url}}" class="img-fluid border-0 rounded shadow-lg" alt="...">
+                    {% endif %}
                 </div>
                 <div class="prog-head">
-                    <h3 class="fw-bold text-success mt-4 text-center" style="font-family: Poppins;">Uthiru/Ruthimitu League</h3>
-                    <p class="text-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic odio magni eos excepturi ut quo magnam iste earum minus tenetur. Libero fugiat dolorem quisquam iure. Placeat incidunt temporibus consectetur cum?</p>
+                    <h3 class="fw-bold text-success mt-4 text-center" style="font-family: Poppins;">{{prog.sp_title}}</h3>
+                    <p class="text-center">{{prog.sp_desc}}</p>
                 </div>
                 <div class="prog-btn text-center align-items-center justify-content-center">
-                    <a href="#" class="btn btn-danger">See Events</a>
+                    <a href="{% url 'events' %}" class="btn btn-danger">See Events</a>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bg-light p-4 shadow-lg mb-3">
-                <div class="prog-img">
-                    <img src="{% static 'img/bg3.jpg' %}" class="img-fluid border-0 rounded shadow-lg" alt="...">
-                </div>
-                <div class="prog-head">
-                    <h3 class="fw-bold text-success mt-4 text-center" style="font-family: Poppins;">Uthiru/Ruthimitu League</h3>
-                    <p class="text-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic odio magni eos excepturi ut quo magnam iste earum minus tenetur. Libero fugiat dolorem quisquam iure. Placeat incidunt temporibus consectetur cum?</p>
-                </div>
-                <div class="prog-btn text-center align-items-center justify-content-center">
-                    <a href="#" class="btn btn-danger">See Events</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

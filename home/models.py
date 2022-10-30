@@ -249,6 +249,20 @@ class Committee(models.Model):
     def __str__(self):
         return self.name + self.role
 
+class Sports(models.Model):
+    sp_title = models.CharField(max_length=255, null=True, unique=True)
+    sp_img = models.ImageField(
+        upload_to="sports_pics/", null=True, blank=True)
+    sp_desc = models.CharField(max_length=2000, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Sports and Recreation'
+
+    def __str__(self):
+        return self.sp_title
+
 # ###########################################################################
 # ################################################################################################
 # FORMS MODELS

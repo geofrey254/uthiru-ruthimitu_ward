@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from .forms import Birth_CertificateForm
 
 # models imports
-from .models import Projects, Post, Gallery, Events, Downloads, Facility, Committee
+from .models import Projects, Post, Gallery, Events, Downloads, Facility, Committee, Sports
 
 # Create your views here.
 
@@ -72,7 +72,9 @@ def garbage(request):
 
 
 def programmes(request):
-    return render(request, 'home/program.html')
+    prog = Sports.objects.order_by('created_on')
+
+    return render(request, 'home/program.html', {'prog':prog})
 
 
 def blogs(request):

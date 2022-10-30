@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility, Committee
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility, Committee, Sports
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -64,3 +64,10 @@ class CommitteeAdmin(admin.ModelAdmin):
     list_filter=('name', 'role')
     search_fields=['name', 'role']
 admin.site.register(Committee, CommitteeAdmin)
+
+# Sports and Recreation Admin Reg
+class SportsAdmin(admin.ModelAdmin):
+    list_display=('sp_title',)
+    list_filter=('sp_title',)
+    search_fields=['sp_title']
+admin.site.register(Sports, SportsAdmin)
