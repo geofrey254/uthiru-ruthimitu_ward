@@ -16,9 +16,9 @@
             <tbody class="table-group-divider">
               {% for down in context %}
               <tr>
-                <td><i class='bx bxs-file-pdf bx-sm text-danger'></i> {{down.d_title}}</td>
+                <td class="fs-5"><i class='bx bxs-file-pdf bx-sm text-danger'></i> {{down.d_title}}</td>
                 {% if down.d_file %}
-                <td><a href="{{down.d_file.url}}" download class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
+                <td><a href="{{down.d_file.url}}" download class="btn btn-outline-danger float-end text-decoration-none"><i class='bx bx-download'></i> Download</a></td>
                 {% endif %}
               </tr>
               {% endfor %}

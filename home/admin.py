@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility, Committee, Sports
+from .models import Birth_Certificate, Projects, Progress_status, Post, Gallery, Events, Category, Downloads, Facility, Committee, Sports, Tenders
 
 # Register your models here.
 class Progress_statusAdmin(admin.ModelAdmin):
@@ -50,6 +50,13 @@ class DownloadsAdmin(admin.ModelAdmin):
     search_fields=['d_title']
     prepopulated_fields={'slug':('d_title',)}
 admin.site.register(Downloads,DownloadsAdmin)
+
+class TendersAdmin(admin.ModelAdmin):
+    list_display = ('t_title', 'created_on',)
+    list_filter=('t_title', 'created_on',)
+    search_fields=['t_title']
+    prepopulated_fields={'slug':('t_title',)}
+admin.site.register(Tenders, TendersAdmin)
 
 # Facilities Admin Reg
 class FacilityAdmin(admin.ModelAdmin):

@@ -200,7 +200,7 @@ class Downloads(models.Model):
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural = 'Downloads'
+        verbose_name_plural = 'Downloads & Resources'
 
     def __str__(self):
         return self.d_title
@@ -208,6 +208,28 @@ class Downloads(models.Model):
     def file_link(self):
         if self.d_file:
             return "<a href='%s'>download</a>" % (self.d_file.url,)
+        else:
+            return "No attachment"
+    file_link.allow_tags = True
+    file_link.short_description = 'File Download'
+
+# Tenders and Notices Model
+class Tenders(models.Model):
+    t_title = models.CharField(max_length=255, null=True, unique=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
+    t_file = models.FileField(upload_to="Tenders_Files/", null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Tenders and Notices'
+
+    def __str__(self):
+        return self.t_title
+
+    def file_link(self):
+        if self.t_file:
+            return "<a href='%s'>download</a>" % (self.t_file.url,)
         else:
             return "No attachment"
     file_link.allow_tags = True
