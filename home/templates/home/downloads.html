@@ -14,10 +14,12 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              {% for down in downloads %}
+              {% for down in context %}
               <tr>
                 <td><i class='bx bxs-file-pdf bx-sm text-danger'></i> {{down.d_title}}</td>
-                <td><a href="{{down.d_file}}" class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
+                {% if down.d_file %}
+                <td><a href="{{down.d_file.url}}" download class="btn btn-outline-danger"><i class='bx bx-download'></i> Download</a></td>
+                {% endif %}
               </tr>
               {% endfor %}
             </tbody>

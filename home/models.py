@@ -195,7 +195,7 @@ class Events(models.Model):
 class Downloads(models.Model):
     d_title = models.CharField(max_length=255, null=True, unique=True)
     slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
-    d_file = models.FileField(upload_to="P9s/", null=True)
+    d_file = models.FileField(upload_to="Downloads_Files/", null=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

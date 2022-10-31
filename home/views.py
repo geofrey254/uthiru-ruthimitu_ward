@@ -15,9 +15,11 @@ from .models import Projects, Post, Gallery, Events, Downloads, Facility, Commit
 
 def home(request):
     posts = Post.objects.order_by('-created_on')[0:3]
+    project_list = Projects.objects.filter(status=1).order_by('created_on')
 
     context = {
-        'posts':posts
+        'posts':posts,
+        'project_list':project_list
     }
     return render(request, 'home/landing.html', context)
 
@@ -110,10 +112,18 @@ def maps(request):
     return render(request, 'home/mappy.html')
 
 
-def downloads(request):
-    downloads = Downloads.objects.order_by('created_on')
+def downloads(request, **kwargs):
+    if request.method=='POST':
+        d_title=request.POST['d_title']       
+        d_file=request.FILES['d_file']
+        object=upload.objects.create(d_title=d_title,d_file=d_file)
+        object.save()  
+    context=Downloads.objects.order_by('created_on')
+
+    # downloads = get_object_or_404(Downloads)
+
     context = {
-        'downloads':Downloads
+        'context':context
     }
     return render(request, 'home/downloads.html', context)
 
