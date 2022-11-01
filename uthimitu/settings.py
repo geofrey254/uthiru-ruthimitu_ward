@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     "crispy_bootstrap5",
-    "tinymce"
+    "tinymce",
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# FILEBASE CONFIGURATION
+AWS_ACCESS_KEY_ID = '2BBDA454895DF2B95922'
+AWS_SECRET_ACCESS_KEY = 'yhcuBRyo1FTz9v0m9MFoe8ZBvuQi5h0A2z3uSPCi'
+AWS_STORAGE_BUCKET_NAME = 'uthiru-ruthimitu-files'
+AWS_S3_ENDPOINT_URL = 'https://s3.filebase.com'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.filebase.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_LOCATION = 'static'
+
+STATICFILES_DORS = [
+	os.path.join(BASE_DIR, 'uthitu_ruthimitu/static'),
+]
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
 STATICFILES_DIRS = [
