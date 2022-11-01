@@ -137,12 +137,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # FILEBASE CONFIGURATION
-AWS_ACCESS_KEY_ID = '2BBDA454895DF2B95922'
-AWS_SECRET_ACCESS_KEY = 'yhcuBRyo1FTz9v0m9MFoe8ZBvuQi5h0A2z3uSPCi'
-AWS_STORAGE_BUCKET_NAME = 'uthiru-ruthimitu-files'
-AWS_S3_ENDPOINT_URL = 'https://s3.filebase.com'
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL")
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.filebase.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
 
 AWS_LOCATION = 'static'
 
@@ -154,11 +154,7 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'uthitu_ruthimitu/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
